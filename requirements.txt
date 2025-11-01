@@ -1,7 +1,7 @@
 streamlit
-google-generativeai
-faiss-cpu
+boto3
 langchain
-langchain-text-splitters
 langchain-community
-langchain-google-genai
+langchain-text-splitters
+langchain-aws
+faiss-cpu
