@@ -1,20 +1,31 @@
 import streamlit as st
-import google.generativeai as genai
 import os
+
+# --- AWS & LangChain Imports ---
+from langchain_aws import BedrockEmbeddings, BedrockChat
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 # --- Page Configuration ---
 st.set_page_config(page_title="Chat with Faisal", page_icon="🤖")
 st.title("🤖 Chat with Faisal's Profile")
 st.caption("Ask me anything about Faisal's resume, projects, or background.")
 
-# Load profile data from a text file in your repo
+# --- Get AWS Credentials from Streamlit Secrets ---
+# We will set these in the Streamlit Cloud settings in the next step
+AWS_ACCESS_KEY_ID = st.secrets.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = st.secrets.get("AWS_SECRET_ACCESS_KEY")
+AWS_REGION = st.secrets.get("AWS_REGION", "us-east-1") # Default to us-east-1
+
+if not AWS_ACCESS_KEY_ID or not AWS_SECRET_ACCESS_KEY:
+    st.info("Please add your AWS Access Key and Secret Key to this app's secrets.")
+    st.stop()
+
+# --- Load Document ---
 @st.cache_data
 def load_document():
-    # Make sure you have a file named 'profile.txt' in your GitHub repo
     try:
+        # Make sure you have a file named 'profile.txt' in your GitHub repo
         with open("profile.txt", "r") as f:
             return f.read()
     except FileNotFoundError:
@@ -24,50 +35,58 @@ def load_document():
 document_text = load_document()
 
 # --- RAG Setup (In-Memory) ---
-# This block runs only once and is cached
 @st.cache_resource
-def setup_rag_pipeline(api_key):
-    # 1. Configure the Google API
-    genai.configure(api_key=api_key)
-    
-    # 2. Split the document into chunks
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-    chunks = text_splitter.split_text(document_text)
-    
-    # 3. Create Google embeddings
-    # Make sure your API key has the "Generative Language API" enabled
+def setup_rag_pipeline():
     try:
-        embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=api_key)
+        # 1. Split the document into chunks
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+        chunks = text_splitter.split_text(document_text)
+        
+        # 2. Create AWS Bedrock Embeddings client
+        embeddings = BedrockEmbeddings(
+            credentials_profile_name=None, # Use keys from secrets
+            region_name=AWS_REGION,
+            aws_access_key_id=AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+            model_id="amazon.titan-embed-text-v1" # This is the model for embeddings
+        )
+        
+        # 3. Create the FAISS in-memory vector store
+        vector_store = FAISS.from_texts(chunks, embeddings)
+        
+        # 4. Create the retriever
+        retriever = vector_store.as_retriever(search_kwargs={"k": 3})
+        
+        # 5. Initialize the Bedrock Chat Model (Claude)
+        llm = BedrockChat(
+            credentials_profile_name=None,
+            region_name=AWS_REGION,
+            aws_access_key_id=AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+            model_id="anthropic.claude-3-sonnet-20240229-v1:0", # This is the model for chatting
+            model_kwargs={"temperature": 0.1}
+        )
+        
+        return retriever, llm
+        
     except Exception as e:
-        st.error(f"Error initializing Google Embeddings: {e}")
-        st.info("Please ensure your Google API key is correct and has the 'Generative Language API' enabled in your Google AI Studio project.")
-        st.stop()
-
-    # 4. Create the FAISS in-memory vector store
-    vector_store = FAISS.from_texts(chunks, embeddings)
-    
-    # 5. Create the retriever
-    retriever = vector_store.as_retriever(search_kwargs={"k": 3}) # Get top 3 chunks
-    
-    # 6. Initialize the Generative Model
-    llm = genai.GenerativeModel('gemini-1.5-flash-latest')
-    
-    return retriever, llm
-
-# --- Get API Key from Streamlit Secrets ---
-google_api_key = st.secrets.get("GOOGLE_API_KEY")
-
-if not google_api_key:
-    st.info("Please add your Google AI Studio API key to this app's secrets.")
-    st.stop()
+        # Catch potential new-user Anthropic error
+        if "is not authorized to perform" in str(e) and "anthropic" in str(e):
+            st.error(f"AWS Error: {e}")
+            st.info("""
+                This is a common first-time user error for Anthropic models. 
+                Please go to your AWS Bedrock console, find 'Model catalog' in the menu,
+                select 'Claude 3 Sonnet', and click 'Request access'. 
+                You may need to submit a brief use-case form.
+                After you get access, please reboot this app.
+            """)
+            st.stop()
+        else:
+            st.error(f"Failed to initialize the RAG pipeline: {e}")
+            st.stop()
 
 # --- Initialize RAG ---
-try:
-    retriever, llm = setup_rag_pipeline(google_api_key)
-except Exception as e:
-    st.error(f"Failed to initialize the RAG pipeline: {e}")
-    st.stop()
-
+retriever, llm = setup_rag_pipeline()
 
 # --- Chat UI ---
 if "messages" not in st.session_state:
@@ -77,7 +96,6 @@ if "messages" not in st.session_state:
     }]
 
 for message in st.session_state.messages:
-    # Use "model" for assistant and "user" for user
     role = "user" if message["role"] == "user" else "assistant"
     with st.chat_message(role):
         st.markdown(message["content"])
@@ -94,8 +112,9 @@ if prompt := st.chat_input("What would you like to know?"):
             context = "\n\n".join([doc.page_content for doc in retrieved_docs])
             
             # 2. Build the prompt for the LLM
+            # Claude 3 models use a different prompt structure
             final_prompt = f"""
-            You are a helpful assistant for Faisal Rahman Chowdhury. 
+            Human: You are a helpful assistant for Faisal Rahman Chowdhury. 
             Answer the user's question based *only* on the context provided below.
             If the answer is not in the context, say "I'm sorry, I don't have that information in Faisal's profile."
             
@@ -105,13 +124,14 @@ if prompt := st.chat_input("What would you like to know?"):
             QUESTION:
             {prompt}
             
-            ANSWER:
+            Assistant:
             """
             
             # 3. Generate the response
             try:
-                response = llm.generate_content(final_prompt)
-                answer = response.text
+                response = llm.invoke(final_prompt) # LangChain .invoke
+                answer = response.content # LangChain .content
+                
                 st.markdown(answer)
                 st.session_state.messages.append({"role": "assistant", "content": answer})
             except Exception as e:
