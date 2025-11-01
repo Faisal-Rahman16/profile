@@ -37,7 +37,7 @@ def setup_rag_pipeline(api_key):
     # 3. Create Google embeddings
     # Make sure your API key has the "Generative Language API" enabled
     try:
-        embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004", google_api_key=api_key)
+        embeddings = GoogleGenerativeAIEmbeddings(model="embedding-001", google_api_key=api_key)
     except Exception as e:
         st.error(f"Error initializing Google Embeddings: {e}")
         st.info("Please ensure your Google API key is correct and has the 'Generative Language API' enabled in your Google AI Studio project.")
@@ -50,7 +50,7 @@ def setup_rag_pipeline(api_key):
     retriever = vector_store.as_retriever(search_kwargs={"k": 3}) # Get top 3 chunks
     
     # 6. Initialize the Generative Model
-    llm = genai.GenerativeModel('gemini-pro')
+    llm = genai.GenerativeModel('gemini-1.5-flash-latest')
     
     return retriever, llm
 
