@@ -2,7 +2,7 @@ import streamlit as st
 import os
 
 # --- AWS & LangChain Imports ---
-from langchain_aws import BedrockEmbeddings, BedrockChat
+from langchain_aws import BedrockEmbeddings, ChatBedrock
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 
@@ -58,7 +58,7 @@ def setup_rag_pipeline():
         retriever = vector_store.as_retriever(search_kwargs={"k": 3})
         
         # 5. Initialize the Bedrock Chat Model (Claude)
-        llm = BedrockChat(
+        llm = ChatBedrock(
             credentials_profile_name=None,
             region_name=AWS_REGION,
             aws_access_key_id=AWS_ACCESS_KEY_ID,
