@@ -1,6 +1,6 @@
 import streamlit as st
 import google.generativeai as genai
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.embeddings import GoogleGenerativeAiEmbeddings
 
