@@ -1,10 +1,11 @@
 import streamlit as st
 import google.generativeai as genai
+import os
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain.vectorstores import FAISS
-from langchain.embeddings import GoogleGenerativeAiEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
-# --- Configuration ---
+# --- Page Configuration ---
 st.set_page_config(page_title="Chat with Faisal", page_icon="🤖")
 st.title("🤖 Chat with Faisal's Profile")
 st.caption("Ask me anything about Faisal's resume, projects, or background.")
@@ -12,8 +13,13 @@ st.caption("Ask me anything about Faisal's resume, projects, or background.")
 # Load profile data from a text file in your repo
 @st.cache_data
 def load_document():
-    with open("profile.txt", "r") as f:
-        return f.read()
+    # Make sure you have a file named 'profile.txt' in your GitHub repo
+    try:
+        with open("profile.txt", "r") as f:
+            return f.read()
+    except FileNotFoundError:
+        st.error("Error: 'profile.txt' file not found in the repository root.")
+        st.stop()
 
 document_text = load_document()
 
@@ -23,31 +29,36 @@ document_text = load_document()
 def setup_rag_pipeline(api_key):
     # 1. Configure the Google API
     genai.configure(api_key=api_key)
-
+    
     # 2. Split the document into chunks
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
     chunks = text_splitter.split_text(document_text)
-
+    
     # 3. Create Google embeddings
-    embeddings = GoogleGenerativeAiEmbeddings(model="models/text-embedding-004", google_api_key=api_key)
+    # Make sure your API key has the "Generative Language API" enabled
+    try:
+        embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004", google_api_key=api_key)
+    except Exception as e:
+        st.error(f"Error initializing Google Embeddings: {e}")
+        st.info("Please ensure your Google API key is correct and has the 'Generative Language API' enabled in your Google AI Studio project.")
+        st.stop()
 
     # 4. Create the FAISS in-memory vector store
     vector_store = FAISS.from_texts(chunks, embeddings)
-
+    
     # 5. Create the retriever
-    retriever = vector_store.as_retriever(search_kwargs={"k": 3})
+    retriever = vector_store.as_retriever(search_kwargs={"k": 3}) # Get top 3 chunks
+    
+    # 6. Initialize the Generative Model
+    llm = genai.GenerativeModel('gemini-1.5-flash')
+    
+    return retriever, llm
 
-    return retriever, genai.GenerativeModel('gemini-1.5-flash')
-
-# --- Get API Key from User ---
-# Use Streamlit's secrets manager in the cloud.
-# For local testing, you can use a text_input.
-
-# Try to get the API key from Streamlit's secrets
+# --- Get API Key from Streamlit Secrets ---
 google_api_key = st.secrets.get("GOOGLE_API_KEY")
 
 if not google_api_key:
-    st.info("Please add your Google AI Studio API key to Streamlit's secrets (key = GOOGLE_API_KEY).")
+    st.info("Please add your Google AI Studio API key to this app's secrets.")
     st.stop()
 
 # --- Initialize RAG ---
@@ -66,35 +77,37 @@ if "messages" not in st.session_state:
     }]
 
 for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
+    # Use "model" for assistant and "user" for user
+    role = "user" if message["role"] == "user" else "assistant"
+    with st.chat_message(role):
         st.markdown(message["content"])
 
 if prompt := st.chat_input("What would you like to know?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
-
+    
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             # 1. Retrieve relevant context
             retrieved_docs = retriever.get_relevant_documents(prompt)
             context = "\n\n".join([doc.page_content for doc in retrieved_docs])
-
+            
             # 2. Build the prompt for the LLM
             final_prompt = f"""
             You are a helpful assistant for Faisal Rahman Chowdhury. 
             Answer the user's question based *only* on the context provided below.
             If the answer is not in the context, say "I'm sorry, I don't have that information in Faisal's profile."
-
+            
             CONTEXT:
             {context}
-
+            
             QUESTION:
             {prompt}
-
+            
             ANSWER:
             """
-
+            
             # 3. Generate the response
             try:
                 response = llm.generate_content(final_prompt)
