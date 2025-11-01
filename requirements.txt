@@ -3,3 +3,5 @@ google-generativeai
 faiss-cpu
 langchain
 langchain-text-splitters
+langchain-community
+langchain-google-genai
