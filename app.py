@@ -108,7 +108,7 @@ if prompt := st.chat_input("What would you like to know?"):
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             # 1. Retrieve relevant context
-            retrieved_docs = retriever.get_relevant_documents(prompt)
+            retrieved_docs = retriever.invoke(prompt)
             context = "\n\n".join([doc.page_content for doc in retrieved_docs])
             
             # 2. Build the prompt for the LLM
