@@ -1,5 +1,5 @@
 streamlit
-google-generativeai
+google-generativeai --upgrade
 faiss-cpu
 langchain
 langchain-text-splitters
