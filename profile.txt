@@ -1,0 +1,49 @@
+Faisal Rahman Chowdhury
++1 (430) 295-9672 | faisalchowdhuryusa@hotmail.com | LinkedIn: faisal-rahman-chowdhury
+SUMMARY
+Result-driven AWS Certified Data Analyst professional with over 5 years of professional experience, I have a passion for transforming complex business challenges into clear, actionable insights. I specialize in designing and building end-to-end BI solutions from ETL pipelines to interactive dashboards using SQL, Python, and AWS services like Redshift and QuickSight. I am a collaborative partner to product, engineering, and business teams, and I enjoy digging into large-scale datasets to establish KPIs and uncover the data-driven narratives that power strategic decision-making and operational efficiency.
+PROFESSIONAL EXPERIENCE
+Business Analyst | InNeed Intelligent Cloud, LLC | Dallas, TX | June 2025 - Present
+•	Designed and established key performance indicators (KPIs) for call center operations, developing a self-service AWS QuickSight dashboard that delivered strategic insights, leading to a 50% reduction in average customer handling time and a 20% lift in customer satisfaction.
+•	Collaborated with data engineering and product management to gather requirements and develop solutions for a high-transaction FinTech client, utilizing the highest standards of analytical rigor and data integrity.
+•	Managed the end-to-end migration of a critical software delivery platform to a scalable AWS EKS environment, architecting a solution that reduced operational costs by 35% while ensuring zero downtime.
+•	Translated business requirements into 20+ user stories in Jira for multiple application features, leading a full SDLC process that reduced post-deployment bugs by 15%.
+•	Authored comprehensive Business Requirements Documents (BRDs) for cloud-based technology solutions, ensuring complete alignment between stakeholder needs and final product delivery on AWS.
+Business Analyst | City of Greenville Finance Department, TX | Greenville, TX | May 2024 - April 2025
+•	Engineered a centralized financial data warehouse, automating data extraction from disparate sources and integrating it with SQL Server and Tableau to empower leadership with advanced business analytics capabilities.
+•	Developed and automated self-service Tableau dashboards for real-time budget monitoring, increasing decision-making speed and accelerating financial reporting cycles by 30%.
+•	Architected a comprehensive data migration strategy by performing a full database schema analysis, creating a rigorous testing and execution plan that ensured a zero-data-loss transition for the new ERP system.
+•	Leveraged advanced SQL (window functions, stored procedures) to query, transform, and analyze large-scale financial datasets to uncover key trends and variances.
+Graduate Research Assistant | Texas A&M University Commerce, TX | September 2023 - December 2024
+•	Built and automated an ETL pipeline to ingest data from an on-premises SQL Server into Azure Data Lake using Azure Data Factory, enabling large-scale analysis.
+•	Analyzed over 630,000 text-based Airbnb reviews using Python (Pandas, NumPy) to extract sentiment and identify key drivers of property value, presenting findings through interactive dashboards (Power BI/Tableau).
+•	Engineered Python scripts to connect to REST APIs, enabling the ingestion and processing of external data into Snowflake tables for analysis.
+
+EDUCATION
+Master of Science in Business Analytics- GPA: 4.0 | Texas A&M University Commerce, TX 
+Bachelor of Business Administration in Finance & MIS- GPA: 3.41 | BRAC University, Dhaka, Bangladesh 
+Technical SKILLS
+•	BI & Visualization: Tableau, AWS QuickSight, Power BI
+•	Databases & Warehousing: Amazon Redshift, SQL Server, MySQL, PostgreSQL, Snowflake, DynamoDB
+•	ETL & Data Modeling: Data Warehousing, ETL Pipeline Development, Data Modeling
+•	Programming & Scripting: Python (Pandas, NumPy, Scikit-learn), SQL
+•	Cloud (AWS): S3, Glue, RDS, Lambda, EC2, EKS
+•	Project Management: Agile, Scrum, Kanban, Jira
+
+Certifications
+AWS Cloud Practitioner | AWS Solution Architect | Pendo Product Analytics | Snowflake (Badge 1–5) | PMP (In Progress)
+PROJECT HIGHLIGHT
+NLP-driven Sentiment Analysis of Amazon Product Reviews to Identify Key Business Insights
+•	Engineered an NLP pipeline in Python to analyze 20,000+ Amazon reviews, performing TF-IDF keyword extraction and sentiment analysis to create a data-driven narrative on customer feedback.
+•	Mapped sentiment to specific product features using supervised machine learning models (Random Forest) to generate actionable recommendations for product improvement. 
+Amazon Sales Order Data Analysis for Business Insights
+•	Analyzed large-scale sales order data using advanced SQL (CTEs, Window Functions) and Python (Pandas), creating Tableau visualizations that uncovered purchasing trends and improved forecasting accuracy by 20%.
+Honors & Achievements
+•	Member of the Student Advisory Board for the Dean of the College of Business, I assisted to improve education quality and the academic environment. I contributed to strategies for enhancing the student experience. For example, I proposed alumni networking programs and soft skills development initiatives, both of which were adopted by the college.
+•	 Vice President of the Marketing & Business Analytics organization, I organize competitions and encourage students to build data skills & solving real-world problems. 
+•	Served as a Peer Mentor for Fall 2024, guiding new students through orientation and supporting their transition to university life.
+•	Won Hackathon at Texas A&M University on Sentiment Analysis on Amazon Products
+•	Awarded scholarship from competitive pool of students: assisted professors in lectures, research and grading.
+•	Awarded Scholarship in Spring Batch for a third-party research project with NETCDC (NFP) on affordable housing in Northeast Texas counties; field visited different county offices and gathered qualitative data.
+•	During my undergrad, I served as VP of the Football Club, where I worked to create awareness and tournaments that eventually led to the establishment of a women’s football team.
+
