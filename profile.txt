@@ -2,6 +2,23 @@ Faisal Rahman Chowdhury
 +1 (430) 295-9672 | faisalchowdhuryusa@hotmail.com | LinkedIn: faisal-rahman-chowdhury
 SUMMARY
 Result-driven AWS Certified Data Analyst professional with over 5 years of professional experience, I have a passion for transforming complex business challenges into clear, actionable insights. I specialize in designing and building end-to-end BI solutions from ETL pipelines to interactive dashboards using SQL, Python, and AWS services like Redshift and QuickSight. I am a collaborative partner to product, engineering, and business teams, and I enjoy digging into large-scale datasets to establish KPIs and uncover the data-driven narratives that power strategic decision-making and operational efficiency.
+
+Having a master's degree in Business Analytics and a passion for uncovering insights through data, I am actively seeking full-time opportunities in data analytics, business analytics, and data engineering. My journey has been driven by a curious mind and a dedication to continuous learning, which has allowed me to quickly acquire new skills and adapt to evolving technologies.
+
+I bring a solid foundation in programming and analytical skills, with considerable experience in CSS and HTML. My proficiency extends to SQL, Python, and R, enabling me to handle complex data manipulation and analysis tasks efficiently. Additionally, I have hands-on experience with ETL processes and visualization tools like Tableau and Power BI, which allow me to transform data into actionable insights.
+
+My work in the capital market has equipped me with strong analytical and financial modeling skills, enhancing my ability to interpret financial data and drive strategic decisions. Effective communication is one of my core strengths, essential for conveying complex data findings in a clear and impactful manner.
+
+In this data-driven world, I am eager to leverage my skills in a dynamic role where I can contribute to making informed business decisions. My goal is to enhance my knowledge in marketing strategies, business analysis, and product management, using data as the foundation for strategic initiatives.
+
+I have also worked as a Freelancer for the past 8 years. Some of my accomplishments include:
+
+👉 Completed 100+ projects on Upwork.
+👉 Maintain 100% Job Success Since 2019
+👉 Worked 1,000+ hours on freelance platforms
+👉 Earned a 100% Feedback Rating
+👉 Worked with 100+ Clients
+
 PROFESSIONAL EXPERIENCE
 Business Analyst | InNeed Intelligent Cloud, LLC | Dallas, TX | June 2025 - Present
 •	Designed and established key performance indicators (KPIs) for call center operations, developing a self-service AWS QuickSight dashboard that delivered strategic insights, leading to a 50% reduction in average customer handling time and a 20% lift in customer satisfaction.
@@ -19,9 +36,33 @@ Graduate Research Assistant | Texas A&M University Commerce, TX | September 2023
 •	Analyzed over 630,000 text-based Airbnb reviews using Python (Pandas, NumPy) to extract sentiment and identify key drivers of property value, presenting findings through interactive dashboards (Power BI/Tableau).
 •	Engineered Python scripts to connect to REST APIs, enabling the ingestion and processing of external data into Snowflake tables for analysis.
 
+Senior Financial Data Analyst	| Jan 2022 – Dec 2022
+CAPM-Asset Management Company	| Dhaka, Bangladesh
+CAPM is the joint venture asset management company of Bangladesh, promoted by a group of UK NRB and local entrepreneurs. CAPM is initiated by a distinguished bilateral team of experienced shareholders, majority of which is owned by Golden Bridge Investments Limited, an investment company in UK. CAPM is driven by a proactive team of highly professional executives skilled in investment management services, fund operations and other advanced financial product.
+
+My primary responsibility to the company includes: 
+
+1. Fund Accounting & Portfolio Management
+2. Fundamental & Technical Analysis of listed securities. 
+3. Investment Research & maintain financial database.
+4. Prepare monthly investment proposal to the management 
+5. Portfolio review & Record keeping. 
+6. Portfolio reporting to management
+7. Liaise & follow up with concern brokers for trade information. 
+8. Calculate Net Asset Value (NAV) of funds and reconcile with other departments.
+- Guided investment strategy for funds totaling BDT 1.5B+, ensuring 100% regulatory compliance.
+- Designed predictive financial models to support investment decisions and risk assessment for securities.
+
+
+Business Consultant & Analyst (Freelance)	| Jan 2017 – Present
+Upwork, Remote
+- Delivered consulting services to 100+ clients in data strategy, google analytics, and digital performance, contributing to ≥30% average business growth.
+- I developed a web solution for a Nashville-based client, targeting local customers. Later, Google Analytics revealed traffic from Atlanta, Florida, and Las Vegas. I suggested geo-specific websites for these areas, which resulted in more than 50% business growth. Additionally, I introduced engagement features like “Call Us” and “Contact Now” buttons, increasing lead capture by at least 20%.
+
 EDUCATION
-Master of Science in Business Analytics- GPA: 4.0 | Texas A&M University Commerce, TX 
-Bachelor of Business Administration in Finance & MIS- GPA: 3.41 | BRAC University, Dhaka, Bangladesh 
+Master of Science in Business Analytics- GPA: 4.0 | Texas A&M University Commerce, TX | May 2023 - December 2024
+Bachelor of Business Administration in Finance & MIS- GPA: 3.41 | BRAC University, Dhaka, Bangladesh January 2017- May 2021 
+
 Technical SKILLS
 •	BI & Visualization: Tableau, AWS QuickSight, Power BI
 •	Databases & Warehousing: Amazon Redshift, SQL Server, MySQL, PostgreSQL, Snowflake, DynamoDB
@@ -30,9 +71,23 @@ Technical SKILLS
 •	Cloud (AWS): S3, Glue, RDS, Lambda, EC2, EKS
 •	Project Management: Agile, Scrum, Kanban, Jira
 
+CORE COMPETENCIES
+✅ Python, R, SQL, HTML, CSS, Gen AI, Leadership in Data-Driven Projects, Strategic Decision-Making
+✅ Data Analysis & Reporting, Automation, Databricks, Alteryx, Jira, SAP
+✅ Data Interpretation and Visualization (Qlik, Looker, Tableau, Power BI), Excel (VLOOKUP, Macros, Pivot Table), SPSS
+✅ Data Warehousing & ETL Techniques (SSMS, SSIS), Azure Data Factory, Amazon S3, Redshift, Oracle, Databricks 
+✅ Statistical Analysis, Project Management, Machine Learning, Regression Analysis, Goal Programming, Network Modeling
+✅ Dashboard and design analysis, Web Application, Cloud (AWS, Azure), DBT , GenAI , RAG 
+
 Certifications
 AWS Cloud Practitioner | AWS Solution Architect | Pendo Product Analytics | Snowflake (Badge 1–5) | PMP (In Progress)
 PROJECT HIGHLIGHT
+
+Excited to share that I am now an Amazon Web Services (AWS) Certified Solutions Architect - Associate.
+This has been a challenging and rewarding journey, deepening my understanding of how to design secure, scalable, and cost-efficient systems in the cloud. For me, this isn't just a certification; it's a critical bridge between my experience in project management, business analysis, data analytics, and the technical architecture that powers modern business.
+
+
+
 NLP-driven Sentiment Analysis of Amazon Product Reviews to Identify Key Business Insights
 •	Engineered an NLP pipeline in Python to analyze 20,000+ Amazon reviews, performing TF-IDF keyword extraction and sentiment analysis to create a data-driven narrative on customer feedback.
 •	Mapped sentiment to specific product features using supervised machine learning models (Random Forest) to generate actionable recommendations for product improvement. 
@@ -46,4 +101,48 @@ Honors & Achievements
 •	Awarded scholarship from competitive pool of students: assisted professors in lectures, research and grading.
 •	Awarded Scholarship in Spring Batch for a third-party research project with NETCDC (NFP) on affordable housing in Northeast Texas counties; field visited different county offices and gathered qualitative data.
 •	During my undergrad, I served as VP of the Football Club, where I worked to create awareness and tournaments that eventually led to the establishment of a women’s football team.
+
+
+Hackathon Champion!
+
+I am happy to share that my team was honored as the champion in the recent hackathon organized by MKTBA Student Organization TAMUC at the East Texas A&M University - College of Business. The challenge focused on tackling Amazon Product Sentiment Analysis and Features Ranking, where we developed innovative solutions to analyze customer reviews, classify sentiment, and rank product features based on their influence on feedback.
+Key Achievements:
+Designed and implemented a sentiment analysis model to classify reviews into positive, negative, and neutral categories.
+
+Identified and ranked product features to uncover actionable insights for product enhancement.
+
+Presented findings through data visualizations and reports that showcased potential areas for growth.
+
+I’ll share more details about our project soon, along with the GitHub link to the backend code we developed to build our model.
+
+A big thanks to my teammate, Tazeen Rashid, for her invaluable contributions throughout the hackathon! 
+
+Thank you, Professor Son Bui for designing such a practical challenge, and the judges, Trang Nguyen and Thao Nguyen for their time and efforts. Last but not least, big thanks to our honorable Professor Zaki Malik for his continuous support.
+
+Project: Austin Airbnb Listings and Reviews Analysis
+
+Living in Texas, I’ve found that Austin is a fantastic destination, full of unique experiences and vibrant culture. After staying in an Airbnb there, I was inspired to dive into Airbnb data for Austin to understand what makes a great guest experience in this popular vacation spot and uncover additional business insights. Using open-source data from Inside Airbnb, I analyzed thousands of listings and reviews to uncover insights that could benefit hosts, property managers, and future guests. Here’s a quick look at the project: Data Loading and Transformation: Imported and processed 10,000+ listings and 630,000+ reviews into Microsoft SQL Server, allowing for scalable analysis. Sentiment Analysis: Used Python’s NLP libraries to classify guest reviews as positive, neutral, or negative. This provided insight into which properties receive the most positive feedback and where there might be areas for improvement. SQL Analysis for Key Insights: Identified top-earning listings, explored host performance in cleanliness, and analyzed occupancy trends. These insights help optimize guest satisfaction and property management decisions.
+Skills Used: SQL, Python, Sentiment Analysis (TextBlob), Data Processing (Pandas), Word Cloud Generation
+
+Project: Amazon Product Sentiment Analysis and Feature Ranking
+
+In today's competitive e-commerce world, customer feedback is more than just reviews—it's a goldmine of insights! I recently won a hackathon on an exciting project focusing on sentiment analysis of Amazon product reviews, specifically analyzing customer feedback for Estée Lauder Youth Cream.
+
+Approach to the Project:
+Data Preparation:
+1. Translated non-English reviews for comprehensive analysis.
+2. Cleaned and tokenized text while removing stopwords for clarity.
+Techniques Applied:
+1. TF-IDF: Extracted significant keywords to identify recurring customer concerns.
+2. Sentiment Analysis: Categorized reviews into positive and negative sentiments.
+3. Feature Sentiment Mapping: Linked customer sentiment with specific product features for actionable insights.
+4. Random Forest: Analyzed feature importance to prioritize key improvement areas.
+
+Model Performance:
+Our model achieved strong results in predicting positive sentiments. While there’s room for improvement in handling negative reviews, the foundation we built demonstrated the power of data-driven insights.
+Key Takeaways:
+We provided actionable recommendations for Amazon, focusing on enhancing the customer experience and boosting product appeal.
+
+
+
 
